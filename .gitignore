@@ -1,0 +1,7 @@
+# Local tooling
+.claude/
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

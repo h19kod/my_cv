@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Haider Ghanem - CV (plain text)</title>
+<!-- Source for Haider_Ghanem_CV_ATS.pdf: one column, standard headings, no graphics,
+     so applicant tracking systems can read every line. -->
+<style>
+  @page { margin: 16mm 18mm; }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 10.5pt; line-height: 1.4; color: #000; background: #fff; max-width: 800px; margin: 24px auto; padding: 0 16px; }
+  h1 { font-size: 20pt; margin: 0; }
+  h2 { font-size: 11.5pt; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #000; padding-bottom: 2px; margin: 14px 0 6px; }
+  h3 { font-size: 10.5pt; margin: 8px 0 2px; }
+  p, ul { margin: 0 0 4px; }
+  ul { padding-left: 18px; }
+  li { margin-bottom: 2px; }
+  a { color: #000; }
+  .meta { margin: 4px 0 0; }
+  @media print { body { margin: 0; padding: 0; max-width: none; } }
+</style>
+</head>
+<body>
+
+<h1>Haider Ghanem</h1>
+<p><strong>Full-Stack Engineer (Python, React, Flutter, Machine Learning)</strong></p>
+<p class="meta">Baghdad, Iraq | +964 771 339 1689 | ha26at@gmail.com | github.com/h19kod | h19kod.github.io/my_cv</p>
+
+<h2>Summary</h2>
+<p>Full-stack engineer who designs and builds complete products: Python backends with FastAPI and Django, React and Flutter front ends, and the data and machine learning work behind them. 8+ production systems shipped, with a focus on security, multi-tenant design and real-time features. Open to remote and on-site work.</p>
+
+<h2>Skills</h2>
+<p><strong>Backend:</strong> Python, FastAPI, Django, Django REST Framework, Flask, Node.js, Express, WebSockets, Celery</p>
+<p><strong>Frontend and mobile:</strong> React, TypeScript, Next.js, Tailwind CSS, Flutter, Dart</p>
+<p><strong>Data and machine learning:</strong> Pandas, NumPy, Scikit-learn, XGBoost, Jupyter, Streamlit</p>
+<p><strong>Databases:</strong> PostgreSQL, SQLite, SQLAlchemy, Redis, Firebase, Supabase</p>
+<p><strong>DevOps:</strong> Linux, Docker, GitHub Actions, Nginx, AWS S3</p>
+<p><strong>Security:</strong> RBAC, JWT authentication, container isolation</p>
+
+<h2>Projects</h2>
+
+<h3>Smart Ordering Platform - multi-tenant Telegram ordering SaaS</h3>
+<p>Django, DRF, Channels, Celery, aiogram, PostgreSQL, React, TypeScript | github.com/h19kod/telegram_bot</p>
+<ul>
+  <li>Lets restaurants and shops in Iraq take orders through a Telegram bot and Mini App, managed from a web dashboard, with an optional AI ordering assistant in Iraqi Arabic.</li>
+  <li>Strict tenant isolation: every query is scoped to its business and covered by an isolation test matrix.</li>
+  <li>Server-side re-pricing, Telegram initData validation, and idempotent checkout with optimistic locking.</li>
+</ul>
+
+<h3>VoxLingo AI - AI video subtitling and dubbing</h3>
+<p>FastAPI, Celery, PostgreSQL, Redis, S3, FFmpeg, React | github.com/h19kod/tool_ai</p>
+<ul>
+  <li>Transcribes videos with Faster-Whisper and translates them with Claude, using a glossary and translation memory.</li>
+  <li>Dubs with a voice per speaker, fitted to the original timing, and produces correct right-to-left Arabic subtitles.</li>
+  <li>Resumable background jobs with live progress over server-sent events.</li>
+</ul>
+
+<h3>Diabetes Prediction - clinical risk model</h3>
+<p>Python, Pandas, Scikit-learn, XGBoost, SMOTE | github.com/h19kod/data_anlysis_diabitc</p>
+<ul>
+  <li>Tuned model that flags diabetes risk from 14 clinical indicators: 92.3% accuracy, 0.956 ROC-AUC, 84.6% recall.</li>
+  <li>SMOTE class balancing raised recall by 23.1 points over the baseline model.</li>
+</ul>
+
+<h3>TripMind AI - AI travel planner (Flutter)</h3>
+<p>Flutter, Dart, Riverpod, GoRouter, Firebase, OpenAI API | github.com/h19kod/Ai_travelsystem_app_flutter</p>
+<ul>
+  <li>30-screen app that turns a destination, budget and dates into a day-by-day itinerary, with an AI chat assistant that falls back to a built-in guide offline.</li>
+  <li>Firebase Auth and Firestore, full Arabic and English support, with tests and CI on every push.</li>
+</ul>
+
+<h3>PIANOVA - interactive piano platform</h3>
+<p>Next.js, TypeScript, Supabase, Three.js, Vitest, Playwright | github.com/h19kod/pianova</p>
+<ul>
+  <li>88-key sampled piano in the browser, played by mouse, multi-touch, computer keyboard or Web MIDI.</li>
+  <li>Composition studio with piano roll and MIDI import, a 3D piano, and offline support as a PWA.</li>
+</ul>
+
+<h2>Languages</h2>
+<p>Arabic: native. English: professional working proficiency.</p>
+
+</body>
+</html>
