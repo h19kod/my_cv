@@ -12,7 +12,10 @@ Personal CV site of **Haider Ghanem (حيدر غانم)**, full-stack engineer i
 - **Command menu.** Press `Ctrl K` (or `⌘K`, or `/`) to jump to a section, open a project, copy the email or change the theme.
 - **Live GitHub numbers.** Repository count, last push and main languages, fetched from the GitHub API.
 - **Motion.** A 3D portrait that follows the pointer, gold dust, scroll reveals. All of it switches off for visitors who prefer reduced motion.
-- **Print-ready.** Printing gives a clean two-page CV. A plain-text version for applicant tracking systems is also included.
+- **Ishtar Gate dividers.** Glazed-brick bands with rosettes and a small winged lion between sections.
+- **Architecture diagram.** The Smart Ordering project opens an interactive diagram: hover or tap a part to see what it does.
+- **A hidden piano.** Type `piano` anywhere (or click the piano icon next to PIANOVA) and play one octave with the keys A to K.
+- **Print-ready.** Printing gives a clean two-page CV with a QR code to the live site. A plain-text version for applicant tracking systems is also included.
 
 ## Files
 

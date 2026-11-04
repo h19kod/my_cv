@@ -136,7 +136,10 @@
   .lang-toggle { font-family: var(--naskh); font-size: 1.05rem; }
   :root[lang="ar"] .lang-toggle { font-family: var(--latin); font-size: 0.85rem; }
   .k-toggle kbd { font: inherit; font-size: 0.78rem; }
-  @media (max-width: 620px) { .k-toggle { display: none; } }
+  @media (max-width: 620px) {
+    .arch-btn { margin-inline-start: 0; margin-top: 0.5rem; }
+    .keys { height: 140px; }
+  .ishtar .lion { width: 86px; height: 50px; } .k-toggle { display: none; } }
 
   /* ---------- Arabic (RTL) ---------- */
   :root[lang="ar"] body { font-family: var(--naskh); font-variation-settings: normal; }
@@ -331,7 +334,6 @@
     margin: 0 auto;
     padding: clamp(56px, 8vw, 104px) 0;
   }
-  section + section { border-top: 1px solid var(--rule); }
   h2 {
     font-weight: 600;
     font-variation-settings: "opsz" 48, "wdth" 85;
@@ -479,7 +481,7 @@
     color: var(--heading);
     line-height: 1.2;
   }
-  .lang dt span {
+  .lang dt span[lang="ar"] {
     font-family: var(--kufi);
     color: var(--accent-text);
     margin-inline-start: 0.4em;
@@ -713,8 +715,8 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent);
       transform: translateX(-120%); animation: shine 3.2s ease-in-out 2s infinite; }
     @keyframes shine { 60%, 100% { transform: translateX(380%); } }
-    .lang dt span { display: inline-block; transition: transform 400ms cubic-bezier(.3,1.6,.5,1); }
-    .lang:hover dt span { transform: translateY(-4px) rotate(-4deg); }
+    .lang dt span[lang="ar"] { display: inline-block; transition: transform 400ms cubic-bezier(.3,1.6,.5,1); }
+    .lang:hover dt span[lang="ar"] { transform: translateY(-4px) rotate(-4deg); }
 
     /* Footer: its own gold dust, an underline that sweeps, a pulsing button */
     footer { position: relative; overflow: hidden; isolation: isolate; }
@@ -735,6 +737,113 @@
       width: 10px; height: 10px; margin: -5px 0 0 -5px; animation: ripple 650ms ease-out forwards; }
     @keyframes ripple { to { transform: scale(18); opacity: 0; } }
 
+  }
+
+  /* ---------- Ishtar Gate dividers: glazed bricks, rosettes and a winged lion ---------- */
+  .ishtar {
+    position: relative; max-width: 1180px; height: 44px; margin: 0 auto;
+    /* the tiles live on ::before so the reveal can clip them without hiding the element from scroll observers */
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 12px 30px -18px rgba(12, 31, 71, .8);
+  }
+  footer > .ishtar { max-width: none; border-radius: 0; position: absolute; top: 10px; left: 0; right: 0; z-index: 1; }
+  footer { padding-top: calc(clamp(48px, 7vw, 88px) + 44px); }
+  .ishtar::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='44'%3E %3Crect width='56' height='44' fill='%230C1F47'/%3E %3Crect x='1' y='1' width='26' height='11' rx='1' fill='%232A54A3'/%3E%3Crect x='29' y='1' width='26' height='11' rx='1' fill='%232F5CB0'/%3E %3Crect x='1' y='1' width='26' height='2' fill='%234A78C8' opacity='.6'/%3E%3Crect x='29' y='1' width='26' height='2' fill='%234A78C8' opacity='.6'/%3E %3Crect x='0' y='13' width='56' height='18' fill='%23163877'/%3E %3Cg transform='translate(28 22)' fill='%23D8B25C'%3E %3Cellipse rx='1.9' ry='5.2' transform='translate(0 -4.2)'/%3E%3Cellipse rx='1.9' ry='5.2' transform='rotate(45) translate(0 -4.2)'/%3E %3Cellipse rx='1.9' ry='5.2' transform='rotate(90) translate(0 -4.2)'/%3E%3Cellipse rx='1.9' ry='5.2' transform='rotate(135) translate(0 -4.2)'/%3E %3Cellipse rx='1.9' ry='5.2' transform='rotate(180) translate(0 -4.2)'/%3E%3Cellipse rx='1.9' ry='5.2' transform='rotate(225) translate(0 -4.2)'/%3E %3Cellipse rx='1.9' ry='5.2' transform='rotate(270) translate(0 -4.2)'/%3E%3Cellipse rx='1.9' ry='5.2' transform='rotate(315) translate(0 -4.2)'/%3E %3Ccircle r='2.4' fill='%23F6E7C1'/%3E%3C/g%3E %3Crect x='-13' y='32' width='26' height='11' rx='1' fill='%232F5CB0'/%3E%3Crect x='15' y='32' width='26' height='11' rx='1' fill='%232A54A3'/%3E%3Crect x='43' y='32' width='26' height='11' rx='1' fill='%232F5CB0'/%3E %3Crect x='15' y='32' width='26' height='2' fill='%234A78C8' opacity='.6'/%3E %3C/svg%3E") repeat-x center / auto 44px; }
+  .ishtar .lion {
+    position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+    width: 104px; height: 60px; padding: 5px 10px;
+    display: grid; place-items: center;
+    background: linear-gradient(180deg, #1A3E83, #102A5C);
+    border: 2px solid var(--gold); border-radius: 6px;
+    color: var(--gold);
+    box-shadow: 0 0 0 4px #0C1F47, 0 10px 24px -8px rgba(0, 0, 0, .6);
+  }
+  .ishtar .lion svg { width: 100%; height: 100%; --night: #102A5C; }
+
+  /* ---------- Hidden mini piano ---------- */
+  .egg {
+    border: 0; background: none; color: var(--ink-soft); cursor: pointer; padding: 2px 4px; margin-inline-start: 6px;
+    vertical-align: middle; border-radius: 6px; opacity: .55; transition: opacity 200ms, color 200ms, transform 200ms;
+  }
+  .egg:hover, .egg:focus-visible { opacity: 1; color: var(--gold-ink); transform: rotate(-8deg) scale(1.1); }
+  .egg svg { width: 20px; height: 20px; display: block; }
+  .mini-piano { position: relative; max-width: 1180px; margin: 0 auto 2.5rem; color: var(--gypsum); }
+  .mini-piano[hidden] { display: none; }
+  .mini-piano header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.8rem; }
+  .mini-piano h3 { margin: 0; font-size: var(--s1); font-weight: 500; color: var(--gold); }
+  .mini-piano small { color: var(--mist); }
+  .mini-piano .close { background: none; border: 1px solid rgba(216, 178, 92, .5); color: var(--gold); border-radius: 999px; padding: 0.3em 0.9em; cursor: pointer; font: inherit; font-size: 0.85rem; }
+  .keys { position: relative; display: flex; height: 170px; direction: ltr; user-select: none; -webkit-user-select: none; touch-action: none; }
+  .keys button { font: inherit; cursor: pointer; border: 0; padding: 0 0 10px; display: flex; align-items: flex-end; justify-content: center; }
+  .keys .w {
+    flex: 1; margin: 0 2px; border-radius: 0 0 8px 8px;
+    background: linear-gradient(180deg, #E9EDF3, #FFFFFF 70%); color: #6B7385; font-size: 0.75rem;
+    box-shadow: inset 0 -6px 0 #CBD2DD;
+  }
+  .keys .b {
+    position: absolute; top: 0; width: 7.5%; height: 60%; z-index: 1; border-radius: 0 0 6px 6px;
+    background: linear-gradient(180deg, #0B1530, #24345C); color: #8E9AB5; font-size: 0.65rem;
+    translate: -50% 0; box-shadow: inset 0 -5px 0 #050B1C;
+  }
+  .keys .down.w { background: linear-gradient(180deg, #F3E2B4, #EBD7A6); box-shadow: inset 0 -2px 0 #CDB57A; }
+  .keys .down.b { background: linear-gradient(180deg, #8A6A1E, #D8B25C); color: #fff; }
+  .note-fx { position: absolute; bottom: 100%; color: var(--gold); font-size: 1.3rem; pointer-events: none; translate: -50% 0; animation: floatup 1.2s ease-out forwards; }
+  @keyframes floatup { to { transform: translateY(-70px) rotate(20deg); opacity: 0; } }
+
+  /* ---------- Architecture dialog ---------- */
+  .arch-btn {
+    display: inline-flex; align-items: center; gap: 0.45em; margin-inline-start: 1rem;
+    background: none; border: 0; padding: 0; cursor: pointer; font: inherit; font-weight: 500; color: var(--link);
+    text-decoration: underline; text-underline-offset: 0.18em;
+  }
+  .arch-btn svg { width: 1.05em; height: 1.05em; }
+  .arch {
+    width: min(1040px, calc(100vw - 24px)); max-height: calc(100vh - 32px); padding: 0;
+    border: 1px solid var(--rule); border-radius: 18px; background: var(--paper); color: var(--ink);
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, .6);
+  }
+  .arch::backdrop { background: rgba(8, 15, 32, .6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .arch-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; padding: 22px 26px 6px; }
+  .arch-head h2 { margin: 0; font-size: var(--s2); }
+  .arch-head p { margin: 0.3em 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+  .arch-close { background: var(--surface); border: 1px solid var(--rule); color: var(--ink); width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; flex: none; }
+  .arch-wrap { overflow-x: auto; padding: 6px 18px; }
+  .arch svg.diagram { display: block; width: 100%; min-width: 760px; height: auto; direction: ltr; }
+  .arch .node rect { fill: var(--surface); stroke: var(--rule); stroke-width: 1.5; transition: stroke 200ms, fill 200ms; }
+  .arch .node.core rect { stroke: var(--gold); stroke-width: 2; }
+  .arch .node text { fill: var(--heading); font: 600 14px var(--latin); }
+  .arch .node text.sub { fill: var(--ink-soft); font-weight: 400; font-size: 11.5px; }
+  .arch .node { cursor: pointer; outline: none; }
+  .arch .node:hover rect, .arch .node:focus rect, .arch .node.on rect { stroke: var(--gold); fill: var(--surface-hover); }
+  .arch .edge { fill: none; stroke: var(--rule); stroke-width: 1.6; marker-end: url(#arrow); transition: stroke 200ms; }
+  .arch .edge.on { stroke: var(--gold); stroke-width: 2.2; stroke-dasharray: 6 5; animation: flow 0.8s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -11; } }
+  .arch .group { fill: none; stroke: var(--rule); stroke-dasharray: 4 4; }
+  .arch .group-label { fill: var(--ink-soft); font: 600 10.5px var(--latin); letter-spacing: .08em; text-transform: uppercase; }
+  .arch-info { margin: 6px 26px 24px; padding: 14px 18px; border-radius: 12px; background: var(--surface); border-inline-start: 3px solid var(--gold); min-height: 4.5em; }
+  .arch-info b { color: var(--heading); display: block; margin-bottom: 0.2em; }
+  .arch-info span { color: var(--ink-soft); }
+
+  /* ---------- QR on paper only ---------- */
+  .print-qr { display: none; }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; z-index: 80; translate: -50% 0;
+    background: var(--night); color: var(--gypsum); border: 1px solid rgba(216, 178, 92, .5);
+    padding: 10px 18px; border-radius: 999px; font-size: 0.92rem; box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .6);
+    opacity: 0; transform: translateY(12px); transition: opacity 300ms, transform 300ms; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html.fx .ishtar::before { clip-path: inset(0 50% 0 50%); transition: clip-path 1100ms cubic-bezier(.7,0,.2,1); }
+    html.fx .ishtar.in::before { clip-path: inset(0 0 0 0); }
+    html.fx .ishtar .lion { opacity: 0; scale: .6; transition: opacity 500ms 700ms, scale 600ms cubic-bezier(.3,1.6,.5,1) 700ms; }
+    html.fx .ishtar.in .lion { opacity: 1; scale: 1; }
+    .ishtar .lion svg { transition: transform 600ms cubic-bezier(.3,1.6,.5,1); }
+    .ishtar:hover .lion svg { transform: translateX(6px); }
+    .ishtar::before { background-position-x: calc(var(--sy, 0) * -0.15px); }
   }
 
   /* ---------- Responsive ---------- */
@@ -778,7 +887,10 @@
       --rule: #CDD3DD; --heading: #13295A; --link: #1D3F7A; --accent-text: #8C2A35; --gold-ink: #8A6A1E; --night: #13295A;
       color-scheme: light;
     }
-    .toolbar, .palette, .gh-live { display: none !important; }
+    .toolbar, .palette, .gh-live, .ishtar, .egg, .arch-btn, .arch, .mini-piano, .toast { display: none !important; }
+    .print-qr { display: flex; flex-direction: column; align-items: center; gap: 1.5mm; margin-top: 4mm; width: 34mm; text-align: center; }
+    .print-qr .qr { width: 22mm; height: 22mm; fill: var(--ink); }
+    .print-qr p { margin: 0; font-size: 7pt; line-height: 1.3; color: var(--ink-soft); }
     @page { margin: 14mm; }
     body { background: #fff; font-size: 10pt; line-height: 1.45; }
     .hero { background: #fff; color: var(--ink); padding: 0 0 4mm; }
@@ -803,7 +915,7 @@
     main { padding: 0; display: flex; flex-direction: column; }
     main > section { width: 100%; }
     section[aria-labelledby="stack-h"] { order: 1; border-top: 0; }
-    section[aria-labelledby="lang-h"] { order: 2; }
+    section[aria-labelledby="lang-h"] { order: 2; border-top: 1px solid var(--rule); }
     section[aria-labelledby="proj-h"] { order: 3; border-top: 1px solid var(--rule); }
     section { padding: 4mm 0; }
     .stack, .langs { break-inside: avoid; }
@@ -848,6 +960,15 @@
   <ul id="palette-list" role="listbox"></ul>
   <footer data-i18n="pal-help">↑ ↓ to move · Enter to open · Esc to close</footer>
 </dialog>
+<dialog class="arch" aria-labelledby="arch-h">
+  <div class="arch-head">
+    <div><h2 id="arch-h">Smart Ordering Platform</h2><p data-i18n="arch-sub">How the system fits together. Hover or tap any part.</p></div>
+    <button class="arch-close" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="arch-wrap"><svg class="diagram" viewBox="0 0 980 380" role="img" aria-label="Architecture diagram of the Smart Ordering Platform"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ink-soft)"/></marker></defs><rect class="group" x="10" y="8" width="180" height="356" rx="12"/><text class="group-label" x="22" y="22">Clients</text><rect class="group" x="385" y="8" width="200" height="356" rx="12"/><text class="group-label" x="397" y="22">Application</text><rect class="group" x="615" y="8" width="170" height="300" rx="12"/><text class="group-label" x="627" y="22">Data</text><path class="edge" id="e1" data-from="chat" data-to="nginx" d="M180 60 C205 60 205 130 225 130"/><path class="edge" id="e2" data-from="miniapp" data-to="nginx" d="M180 190 L225 190"/><path class="edge" id="e3" data-from="dash" data-to="nginx" d="M180 320 C205 320 205 250 225 250"/><path class="edge" id="e4" data-from="nginx" data-to="bot" d="M345 120 C370 120 370 60 395 60"/><path class="edge" id="e5" data-from="nginx" data-to="api" d="M345 190 L395 190"/><path class="edge" id="e6" data-from="bot" data-to="api" d="M485 90 L485 145"/><path class="edge" id="e7" data-from="api" data-to="pg" d="M575 165 C600 165 600 58 625 58"/><path class="edge" id="e8" data-from="api" data-to="redis" d="M575 180 C600 180 600 163 625 163"/><path class="edge" id="e9" data-from="api" data-to="s3" d="M575 210 C600 210 600 268 625 268"/><path class="edge" id="e10" data-from="redis" data-to="workers" d="M700 191 L700 225 C700 250 600 320 575 320"/><path class="edge" id="e11" data-from="workers" data-to="ai" d="M575 330 C700 330 700 320 820 320"/><path class="edge" id="e12" data-from="workers" data-to="tg" d="M560 290 C600 120 780 100 820 70"/><path class="edge" id="e13" data-from="bot" data-to="tg" d="M575 45 C700 20 760 40 820 50"/><g class="node" data-node="chat" tabindex="0" role="button" aria-label="Customer chat"><rect x="20" y="30" width="160" height="60" rx="10"/><text x="34" y="57">Customer chat</text><text class="sub" x="34" y="74">Telegram</text></g><g class="node" data-node="miniapp" tabindex="0" role="button" aria-label="Mini App"><rect x="20" y="160" width="160" height="60" rx="10"/><text x="34" y="187">Mini App</text><text class="sub" x="34" y="204">Telegram WebView</text></g><g class="node" data-node="dash" tabindex="0" role="button" aria-label="Dashboard"><rect x="20" y="290" width="160" height="60" rx="10"/><text x="34" y="317">Dashboard</text><text class="sub" x="34" y="334">React + TypeScript</text></g><g class="node" data-node="nginx" tabindex="0" role="button" aria-label="Nginx"><rect x="225" y="95" width="120" height="190" rx="10"/><text x="239" y="187">Nginx</text><text class="sub" x="239" y="204">TLS · rate limit</text></g><g class="node" data-node="bot" tabindex="0" role="button" aria-label="Bot service"><rect x="395" y="30" width="180" height="60" rx="10"/><text x="409" y="57">Bot service</text><text class="sub" x="409" y="74">aiogram 3 · webhooks</text></g><g class="node core" data-node="api" tabindex="0" role="button" aria-label="Django API"><rect x="395" y="145" width="180" height="90" rx="10"/><text x="409" y="187">Django API</text><text class="sub" x="409" y="204">DRF + Channels</text></g><g class="node" data-node="workers" tabindex="0" role="button" aria-label="Celery workers"><rect x="395" y="290" width="180" height="60" rx="10"/><text x="409" y="317">Celery workers</text><text class="sub" x="409" y="334">+ Beat scheduler</text></g><g class="node" data-node="pg" tabindex="0" role="button" aria-label="PostgreSQL"><rect x="625" y="30" width="150" height="56" rx="10"/><text x="639" y="55">PostgreSQL</text><text class="sub" x="639" y="72">business_id on every row</text></g><g class="node" data-node="redis" tabindex="0" role="button" aria-label="Redis"><rect x="625" y="135" width="150" height="56" rx="10"/><text x="639" y="160">Redis</text><text class="sub" x="639" y="177">broker · cache · state</text></g><g class="node" data-node="s3" tabindex="0" role="button" aria-label="S3 / MinIO"><rect x="625" y="240" width="150" height="56" rx="10"/><text x="639" y="265">S3 / MinIO</text><text class="sub" x="639" y="282">media</text></g><g class="node" data-node="tg" tabindex="0" role="button" aria-label="Telegram Bot API"><rect x="820" y="30" width="140" height="56" rx="10"/><text x="834" y="55">Telegram Bot API</text><text class="sub" x="834" y="72">send · edit</text></g><g class="node" data-node="ai" tabindex="0" role="button" aria-label="AI provider"><rect x="820" y="290" width="140" height="60" rx="10"/><text x="834" y="317">AI provider</text><text class="sub" x="834" y="334">Claude</text></g></svg></div>
+  <div class="arch-info" aria-live="polite"></div>
+</dialog>
+<div class="toast" role="status" aria-live="polite"></div>
 <div class="scroll-bar" aria-hidden="true"></div>
 <header class="hero">
   <div class="hero-fx" aria-hidden="true"><canvas></canvas></div>
@@ -911,6 +1032,7 @@
         <span class="glare" aria-hidden="true"></span>
       </div>
     </figure>
+    <div class="print-qr"><svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true"><path d="M0,0h1v1h-1zM1,0h1v1h-1zM2,0h1v1h-1zM3,0h1v1h-1zM4,0h1v1h-1zM5,0h1v1h-1zM6,0h1v1h-1zM10,0h1v1h-1zM11,0h1v1h-1zM12,0h1v1h-1zM15,0h1v1h-1zM16,0h1v1h-1zM17,0h1v1h-1zM18,0h1v1h-1zM19,0h1v1h-1zM20,0h1v1h-1zM22,0h1v1h-1zM23,0h1v1h-1zM24,0h1v1h-1zM25,0h1v1h-1zM26,0h1v1h-1zM27,0h1v1h-1zM28,0h1v1h-1zM0,1h1v1h-1zM6,1h1v1h-1zM9,1h1v1h-1zM10,1h1v1h-1zM11,1h1v1h-1zM12,1h1v1h-1zM18,1h1v1h-1zM22,1h1v1h-1zM28,1h1v1h-1zM0,2h1v1h-1zM2,2h1v1h-1zM3,2h1v1h-1zM4,2h1v1h-1zM6,2h1v1h-1zM8,2h1v1h-1zM9,2h1v1h-1zM12,2h1v1h-1zM14,2h1v1h-1zM16,2h1v1h-1zM19,2h1v1h-1zM20,2h1v1h-1zM22,2h1v1h-1zM24,2h1v1h-1zM25,2h1v1h-1zM26,2h1v1h-1zM28,2h1v1h-1zM0,3h1v1h-1zM2,3h1v1h-1zM3,3h1v1h-1zM4,3h1v1h-1zM6,3h1v1h-1zM8,3h1v1h-1zM10,3h1v1h-1zM16,3h1v1h-1zM17,3h1v1h-1zM19,3h1v1h-1zM22,3h1v1h-1zM24,3h1v1h-1zM25,3h1v1h-1zM26,3h1v1h-1zM28,3h1v1h-1zM0,4h1v1h-1zM2,4h1v1h-1zM3,4h1v1h-1zM4,4h1v1h-1zM6,4h1v1h-1zM8,4h1v1h-1zM9,4h1v1h-1zM10,4h1v1h-1zM12,4h1v1h-1zM13,4h1v1h-1zM14,4h1v1h-1zM15,4h1v1h-1zM17,4h1v1h-1zM18,4h1v1h-1zM19,4h1v1h-1zM22,4h1v1h-1zM24,4h1v1h-1zM25,4h1v1h-1zM26,4h1v1h-1zM28,4h1v1h-1zM0,5h1v1h-1zM6,5h1v1h-1zM8,5h1v1h-1zM9,5h1v1h-1zM11,5h1v1h-1zM13,5h1v1h-1zM14,5h1v1h-1zM15,5h1v1h-1zM16,5h1v1h-1zM17,5h1v1h-1zM22,5h1v1h-1zM28,5h1v1h-1zM0,6h1v1h-1zM1,6h1v1h-1zM2,6h1v1h-1zM3,6h1v1h-1zM4,6h1v1h-1zM5,6h1v1h-1zM6,6h1v1h-1zM8,6h1v1h-1zM10,6h1v1h-1zM12,6h1v1h-1zM14,6h1v1h-1zM16,6h1v1h-1zM18,6h1v1h-1zM20,6h1v1h-1zM22,6h1v1h-1zM23,6h1v1h-1zM24,6h1v1h-1zM25,6h1v1h-1zM26,6h1v1h-1zM27,6h1v1h-1zM28,6h1v1h-1zM8,7h1v1h-1zM9,7h1v1h-1zM10,7h1v1h-1zM13,7h1v1h-1zM15,7h1v1h-1zM19,7h1v1h-1zM0,8h1v1h-1zM2,8h1v1h-1zM3,8h1v1h-1zM4,8h1v1h-1zM5,8h1v1h-1zM6,8h1v1h-1zM9,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM15,8h1v1h-1zM17,8h1v1h-1zM18,8h1v1h-1zM22,8h1v1h-1zM23,8h1v1h-1zM24,8h1v1h-1zM25,8h1v1h-1zM26,8h1v1h-1zM1,9h1v1h-1zM3,9h1v1h-1zM5,9h1v1h-1zM8,9h1v1h-1zM9,9h1v1h-1zM10,9h1v1h-1zM15,9h1v1h-1zM16,9h1v1h-1zM17,9h1v1h-1zM18,9h1v1h-1zM19,9h1v1h-1zM20,9h1v1h-1zM21,9h1v1h-1zM22,9h1v1h-1zM23,9h1v1h-1zM24,9h1v1h-1zM28,9h1v1h-1zM1,10h1v1h-1zM2,10h1v1h-1zM5,10h1v1h-1zM6,10h1v1h-1zM9,10h1v1h-1zM10,10h1v1h-1zM17,10h1v1h-1zM20,10h1v1h-1zM22,10h1v1h-1zM23,10h1v1h-1zM1,11h1v1h-1zM4,11h1v1h-1zM5,11h1v1h-1zM7,11h1v1h-1zM11,11h1v1h-1zM14,11h1v1h-1zM16,11h1v1h-1zM20,11h1v1h-1zM22,11h1v1h-1zM25,11h1v1h-1zM27,11h1v1h-1zM0,12h1v1h-1zM1,12h1v1h-1zM2,12h1v1h-1zM3,12h1v1h-1zM4,12h1v1h-1zM6,12h1v1h-1zM7,12h1v1h-1zM10,12h1v1h-1zM12,12h1v1h-1zM16,12h1v1h-1zM17,12h1v1h-1zM20,12h1v1h-1zM25,12h1v1h-1zM26,12h1v1h-1zM1,13h1v1h-1zM2,13h1v1h-1zM4,13h1v1h-1zM8,13h1v1h-1zM12,13h1v1h-1zM13,13h1v1h-1zM14,13h1v1h-1zM15,13h1v1h-1zM17,13h1v1h-1zM18,13h1v1h-1zM19,13h1v1h-1zM20,13h1v1h-1zM21,13h1v1h-1zM22,13h1v1h-1zM23,13h1v1h-1zM24,13h1v1h-1zM28,13h1v1h-1zM0,14h1v1h-1zM5,14h1v1h-1zM6,14h1v1h-1zM13,14h1v1h-1zM14,14h1v1h-1zM15,14h1v1h-1zM16,14h1v1h-1zM23,14h1v1h-1zM24,14h1v1h-1zM25,14h1v1h-1zM26,14h1v1h-1zM0,15h1v1h-1zM2,15h1v1h-1zM4,15h1v1h-1zM5,15h1v1h-1zM8,15h1v1h-1zM13,15h1v1h-1zM15,15h1v1h-1zM21,15h1v1h-1zM27,15h1v1h-1zM0,16h1v1h-1zM1,16h1v1h-1zM5,16h1v1h-1zM6,16h1v1h-1zM7,16h1v1h-1zM10,16h1v1h-1zM12,16h1v1h-1zM14,16h1v1h-1zM15,16h1v1h-1zM17,16h1v1h-1zM19,16h1v1h-1zM21,16h1v1h-1zM23,16h1v1h-1zM25,16h1v1h-1zM26,16h1v1h-1zM0,17h1v1h-1zM1,17h1v1h-1zM2,17h1v1h-1zM4,17h1v1h-1zM8,17h1v1h-1zM15,17h1v1h-1zM16,17h1v1h-1zM17,17h1v1h-1zM19,17h1v1h-1zM20,17h1v1h-1zM21,17h1v1h-1zM22,17h1v1h-1zM24,17h1v1h-1zM26,17h1v1h-1zM28,17h1v1h-1zM0,18h1v1h-1zM3,18h1v1h-1zM4,18h1v1h-1zM6,18h1v1h-1zM10,18h1v1h-1zM11,18h1v1h-1zM12,18h1v1h-1zM18,18h1v1h-1zM22,18h1v1h-1zM23,18h1v1h-1zM24,18h1v1h-1zM26,18h1v1h-1zM0,19h1v1h-1zM4,19h1v1h-1zM7,19h1v1h-1zM10,19h1v1h-1zM11,19h1v1h-1zM14,19h1v1h-1zM16,19h1v1h-1zM20,19h1v1h-1zM21,19h1v1h-1zM22,19h1v1h-1zM24,19h1v1h-1zM27,19h1v1h-1zM0,20h1v1h-1zM3,20h1v1h-1zM4,20h1v1h-1zM6,20h1v1h-1zM7,20h1v1h-1zM9,20h1v1h-1zM10,20h1v1h-1zM20,20h1v1h-1zM21,20h1v1h-1zM22,20h1v1h-1zM23,20h1v1h-1zM24,20h1v1h-1zM26,20h1v1h-1zM27,20h1v1h-1zM28,20h1v1h-1zM8,21h1v1h-1zM10,21h1v1h-1zM12,21h1v1h-1zM13,21h1v1h-1zM14,21h1v1h-1zM15,21h1v1h-1zM17,21h1v1h-1zM19,21h1v1h-1zM20,21h1v1h-1zM24,21h1v1h-1zM25,21h1v1h-1zM26,21h1v1h-1zM27,21h1v1h-1zM28,21h1v1h-1zM0,22h1v1h-1zM1,22h1v1h-1zM2,22h1v1h-1zM3,22h1v1h-1zM4,22h1v1h-1zM5,22h1v1h-1zM6,22h1v1h-1zM10,22h1v1h-1zM11,22h1v1h-1zM12,22h1v1h-1zM13,22h1v1h-1zM14,22h1v1h-1zM15,22h1v1h-1zM16,22h1v1h-1zM17,22h1v1h-1zM19,22h1v1h-1zM20,22h1v1h-1zM22,22h1v1h-1zM24,22h1v1h-1zM25,22h1v1h-1zM26,22h1v1h-1zM0,23h1v1h-1zM6,23h1v1h-1zM8,23h1v1h-1zM9,23h1v1h-1zM10,23h1v1h-1zM13,23h1v1h-1zM16,23h1v1h-1zM19,23h1v1h-1zM20,23h1v1h-1zM24,23h1v1h-1zM28,23h1v1h-1zM0,24h1v1h-1zM2,24h1v1h-1zM3,24h1v1h-1zM4,24h1v1h-1zM6,24h1v1h-1zM8,24h1v1h-1zM10,24h1v1h-1zM11,24h1v1h-1zM14,24h1v1h-1zM17,24h1v1h-1zM20,24h1v1h-1zM21,24h1v1h-1zM22,24h1v1h-1zM23,24h1v1h-1zM24,24h1v1h-1zM26,24h1v1h-1zM28,24h1v1h-1zM0,25h1v1h-1zM2,25h1v1h-1zM3,25h1v1h-1zM4,25h1v1h-1zM6,25h1v1h-1zM8,25h1v1h-1zM9,25h1v1h-1zM11,25h1v1h-1zM13,25h1v1h-1zM18,25h1v1h-1zM19,25h1v1h-1zM23,25h1v1h-1zM25,25h1v1h-1zM26,25h1v1h-1zM0,26h1v1h-1zM2,26h1v1h-1zM3,26h1v1h-1zM4,26h1v1h-1zM6,26h1v1h-1zM8,26h1v1h-1zM9,26h1v1h-1zM13,26h1v1h-1zM14,26h1v1h-1zM15,26h1v1h-1zM17,26h1v1h-1zM18,26h1v1h-1zM20,26h1v1h-1zM21,26h1v1h-1zM22,26h1v1h-1zM24,26h1v1h-1zM25,26h1v1h-1zM26,26h1v1h-1zM27,26h1v1h-1zM0,27h1v1h-1zM6,27h1v1h-1zM9,27h1v1h-1zM10,27h1v1h-1zM12,27h1v1h-1zM14,27h1v1h-1zM16,27h1v1h-1zM20,27h1v1h-1zM24,27h1v1h-1zM25,27h1v1h-1zM27,27h1v1h-1zM0,28h1v1h-1zM1,28h1v1h-1zM2,28h1v1h-1zM3,28h1v1h-1zM4,28h1v1h-1zM5,28h1v1h-1zM6,28h1v1h-1zM8,28h1v1h-1zM10,28h1v1h-1zM12,28h1v1h-1zM13,28h1v1h-1zM14,28h1v1h-1zM15,28h1v1h-1zM16,28h1v1h-1zM17,28h1v1h-1zM19,28h1v1h-1zM22,28h1v1h-1zM26,28h1v1h-1z"/></svg><p>Scan for the live CV<br>h19kod.github.io/my_cv</p></div>
     </div>
   </div>
 </header>
@@ -926,6 +1048,7 @@
         <div class="case-side">
           <ul class="chips"><li>Django</li><li>Celery</li><li>PostgreSQL</li><li>React</li></ul>
           <a class="repo" href="https://github.com/h19kod/telegram_bot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2"/></svg><span class="repo-txt" data-i18n="code">View code</span></a>
+          <button class="arch-btn" type="button" data-arch><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><rect x="8.5" y="15" width="7" height="6" rx="1.5"/><path d="M6.5 9v3h11V9M12 12v3"/></svg><span data-i18n="arch">Architecture</span></button>
         </div>
       </li>
       <li class="case">
@@ -954,7 +1077,7 @@
       </li>
       <li class="case">
         <div class="case-meta"><span class="num">05</span><span class="domain" data-i18n="d5">Web · Frontend</span></div>
-        <div class="case-body"><h3>PIANOVA</h3><p class="pitch" data-i18n="p5">A full 88-key piano in the browser, with lessons, a composition studio and a 3D piano.</p></div>
+        <div class="case-body"><h3>PIANOVA<button class="egg" type="button" data-piano aria-label="Play a small piano" title="Play a small piano"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M12 4v16M16 4v16"/><path d="M6.5 4h3v8h-3zM14.5 4h3v8h-3z" fill="currentColor"/></svg></button></h3><p class="pitch" data-i18n="p5">A full 88-key piano in the browser, with lessons, a composition studio and a 3D piano.</p></div>
         <div class="case-side">
           <ul class="chips"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>Three.js</li></ul>
           <a class="repo" href="https://github.com/h19kod/pianova" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2"/></svg><span class="repo-txt" data-i18n="code">View code</span></a>
@@ -963,6 +1086,8 @@
     </ol>
     <p class="gh-live" hidden aria-live="polite"></p>
   </section>
+
+<div class="ishtar" aria-hidden="true"><span class="lion"><svg viewBox="0 0 100 50" fill="currentColor" aria-hidden="true"> <path d="M24 26C14 26 10 18 13 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="13" cy="10" r="3.2"/> <path d="M30 21h38a7 7 0 0 1 7 7v3a7 7 0 0 1-7 7H30a7 7 0 0 1-7-7v-3a7 7 0 0 1 7-7z"/> <rect x="27" y="33" width="5" height="14" rx="1.5"/><rect x="37" y="33" width="5" height="12" rx="1.5" transform="rotate(10 39 33)"/> <rect x="62" y="33" width="5" height="14" rx="1.5"/><rect x="71" y="33" width="5" height="12" rx="1.5" transform="rotate(-10 73 33)"/> <circle cx="79" cy="21" r="10.5"/><path d="M85 15.5l9.5 5-9.5 5.5z"/> <path d="M38 23C38 10 49 2 66 1C59 5 58 8 61 11C55 11 53 14 56 18C50 18 47 20 47 23Z"/> <path d="M46 17L58 8M49 20L60 14" fill="none" stroke="var(--night)" stroke-width="1.1" stroke-linecap="round"/> <circle cx="84" cy="19" r="1.3" fill="var(--night)"/> </svg></span></div>
 
   <section aria-labelledby="stack-h">
     <h2 id="stack-h" data-i18n="stack-h">Skills, layer by layer</h2>
@@ -1001,6 +1126,8 @@
     <p class="flow-note" data-i18n="flow">Read top to bottom: what the user sees, down to where it runs.</p>
   </section>
 
+<div class="ishtar" aria-hidden="true"><span class="lion"><svg viewBox="0 0 100 50" fill="currentColor" aria-hidden="true"> <path d="M24 26C14 26 10 18 13 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="13" cy="10" r="3.2"/> <path d="M30 21h38a7 7 0 0 1 7 7v3a7 7 0 0 1-7 7H30a7 7 0 0 1-7-7v-3a7 7 0 0 1 7-7z"/> <rect x="27" y="33" width="5" height="14" rx="1.5"/><rect x="37" y="33" width="5" height="12" rx="1.5" transform="rotate(10 39 33)"/> <rect x="62" y="33" width="5" height="14" rx="1.5"/><rect x="71" y="33" width="5" height="12" rx="1.5" transform="rotate(-10 73 33)"/> <circle cx="79" cy="21" r="10.5"/><path d="M85 15.5l9.5 5-9.5 5.5z"/> <path d="M38 23C38 10 49 2 66 1C59 5 58 8 61 11C55 11 53 14 56 18C50 18 47 20 47 23Z"/> <path d="M46 17L58 8M49 20L60 14" fill="none" stroke="var(--night)" stroke-width="1.1" stroke-linecap="round"/> <circle cx="84" cy="19" r="1.3" fill="var(--night)"/> </svg></span></div>
+
   <section aria-labelledby="lang-h">
     <h2 id="lang-h" data-i18n="lang-h">Languages</h2>
     <dl class="langs">
@@ -1017,7 +1144,13 @@
 </main>
 
 <footer>
+  <div class="ishtar" aria-hidden="true"><span class="lion"><svg viewBox="0 0 100 50" fill="currentColor" aria-hidden="true"> <path d="M24 26C14 26 10 18 13 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="13" cy="10" r="3.2"/> <path d="M30 21h38a7 7 0 0 1 7 7v3a7 7 0 0 1-7 7H30a7 7 0 0 1-7-7v-3a7 7 0 0 1 7-7z"/> <rect x="27" y="33" width="5" height="14" rx="1.5"/><rect x="37" y="33" width="5" height="12" rx="1.5" transform="rotate(10 39 33)"/> <rect x="62" y="33" width="5" height="14" rx="1.5"/><rect x="71" y="33" width="5" height="12" rx="1.5" transform="rotate(-10 73 33)"/> <circle cx="79" cy="21" r="10.5"/><path d="M85 15.5l9.5 5-9.5 5.5z"/> <path d="M38 23C38 10 49 2 66 1C59 5 58 8 61 11C55 11 53 14 56 18C50 18 47 20 47 23Z"/> <path d="M46 17L58 8M49 20L60 14" fill="none" stroke="var(--night)" stroke-width="1.1" stroke-linecap="round"/> <circle cx="84" cy="19" r="1.3" fill="var(--night)"/> </svg></span></div>
   <div class="foot-fx" aria-hidden="true"><canvas></canvas></div>
+  <div class="mini-piano" hidden>
+    <header><div><h3 data-i18n="pn-h">A small piano, from PIANOVA</h3><small data-i18n="pn-s">Click the keys, or play A W S E D F T G Y H U J K on your keyboard.</small></div>
+    <button class="close" type="button" data-i18n="pn-x">Close</button></header>
+    <div class="keys"></div>
+  </div>
   <div class="foot-inner">
     <div>
       <p class="big" data-i18n="cta">Have a system to build? <a href="mailto:ha26at@gmail.com">Email me</a>.</p>
@@ -1069,7 +1202,9 @@
     ats: 'نسخة نصية بسيطة لأنظمة فرز السير الذاتية (PDF)',
     print: 'حفظ كـ PDF',
     alt: 'صورة حيدر غانم ببدلة كحلية وربطة عنق مارونية',
-    'pal-help': '↑ ↓ للتنقل · Enter للفتح · Esc للإغلاق'
+    'pal-help': '↑ ↓ للتنقل · Enter للفتح · Esc للإغلاق',
+    arch: 'بنية النظام', 'arch-sub': 'كيف تترابط أجزاء النظام. مرّر المؤشر أو اضغط على أي جزء.',
+    'pn-h': 'بيانو صغير من PIANOVA', 'pn-s': 'اضغط على المفاتيح، أو اعزف بالأحرف A W S E D F T G Y H U J K.', 'pn-x': 'إغلاق'
   };
   const EN = {};
   const nodes = [...document.querySelectorAll('[data-i18n]')];
@@ -1121,6 +1256,8 @@
     { label: t('Copy email address', 'نسخ البريد الإلكتروني'), hint: t('Clipboard', 'الحافظة'), run: () => navigator.clipboard?.writeText('ha26at@gmail.com') },
     { label: t('Chat on WhatsApp', 'محادثة على WhatsApp'), hint: '+964 771 339 1689', run: open('https://wa.me/9647713391689') },
     { label: t('Open GitHub profile', 'فتح حساب GitHub'), hint: 'h19kod', run: open('https://github.com/h19kod') },
+    { label: t('Smart Ordering architecture', 'بنية Smart Ordering'), hint: t('Diagram', 'رسم'), run: () => openArch() },
+    { label: t('Play the piano', 'العزف على البيانو'), hint: '🎹', run: () => openPiano() },
     { label: isDark() ? t('Switch to day mode', 'الوضع النهاري') : t('Switch to night mode', 'الوضع الليلي'), hint: t('Theme', 'المظهر'), run: toggleTheme },
     { label: t('View in Arabic', 'View in English'), hint: t('Language', 'اللغة'), run: () => setLang(t('ar', 'en'), true) },
     { label: t('Save as PDF', 'حفظ كـ PDF'), hint: t('Print', 'طباعة'), run: () => setTimeout(() => window.print(), 50) },
@@ -1201,6 +1338,140 @@
     } catch (e) { /* offline or rate-limited: the line simply stays hidden */ }
   })();
 
+
+  /* ---------- Toast ---------- */
+  const toastEl = document.querySelector('.toast');
+  let toastTimer;
+  const toast = msg => {
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+  };
+
+  /* ---------- Tab title when the visitor looks away ---------- */
+  document.addEventListener('visibilitychange', () => {
+    document.title = document.hidden ? t('👋 Come back, let’s build something', '👋 عُد، لنبنِ شيئاً معاً') : titles[lang];
+  });
+
+  /* ---------- Hidden mini piano ---------- */
+  const pianoBox = document.querySelector('.mini-piano');
+  const keysEl = pianoBox.querySelector('.keys');
+  const NOTES = [ // midi, white?, keyboard key
+    [60, 1, 'a'], [61, 0, 'w'], [62, 1, 's'], [63, 0, 'e'], [64, 1, 'd'], [65, 1, 'f'], [66, 0, 't'],
+    [67, 1, 'g'], [68, 0, 'y'], [69, 1, 'h'], [70, 0, 'u'], [71, 1, 'j'], [72, 1, 'k']
+  ];
+  const whites = NOTES.filter(n => n[1]).length;
+  let wi = 0;
+  const keyEls = {};
+  NOTES.forEach(([m, w, k]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = w ? 'w' : 'b'; b.dataset.midi = m; b.textContent = k.toUpperCase();
+    b.setAttribute('aria-label', 'C C# D D# E F F# G G# A A# B C'.split(' ')[m - 60] + (m === 72 ? '5' : '4'));
+    if (w) wi++; else b.style.left = (wi / whites * 100) + '%';
+    keysEl.appendChild(b); keyEls[k] = b;
+  });
+  let actx = null;
+  const play = (midi, el) => {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === 'suspended') actx.resume();
+    const f = 440 * Math.pow(2, (midi - 69) / 12), now = actx.currentTime;
+    const out = actx.createGain(), lp = actx.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.setValueAtTime(3200, now); lp.frequency.exponentialRampToValueAtTime(900, now + 1.2);
+    out.gain.setValueAtTime(0.0001, now);
+    out.gain.exponentialRampToValueAtTime(0.32, now + 0.006);
+    out.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+    [[1, 'triangle', 1], [2, 'sine', 0.35], [3, 'sine', 0.12]].forEach(([mul, type, g]) => {
+      const o = actx.createOscillator(), og = actx.createGain();
+      o.type = type; o.frequency.value = f * mul; og.gain.value = g;
+      o.connect(og).connect(lp); o.start(now); o.stop(now + 1.9);
+    });
+    lp.connect(out).connect(actx.destination);
+    if (el) {
+      el.classList.add('down'); setTimeout(() => el.classList.remove('down'), 180);
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const n = document.createElement('span');
+        n.className = 'note-fx'; n.textContent = '♪♫♩'[midi % 3];
+        n.style.left = (el.offsetLeft + el.offsetWidth / 2) + 'px';
+        keysEl.appendChild(n); n.addEventListener('animationend', () => n.remove());
+      }
+    }
+  };
+  keysEl.addEventListener('pointerdown', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    e.preventDefault(); play(+b.dataset.midi, b);
+  });
+  keysEl.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset.midi) { e.preventDefault(); play(+e.target.dataset.midi, e.target); }
+  });
+  const openPiano = () => {
+    pianoBox.hidden = false;
+    pianoBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    toast(t('🎹 You found the piano. Play with the keys A to K.', '🎹 وجدت البيانو! اعزف بالأحرف من A إلى K.'));
+  };
+  const closePiano = () => { pianoBox.hidden = true; };
+  pianoBox.querySelector('.close').addEventListener('click', closePiano);
+  document.querySelectorAll('[data-piano]').forEach(b => b.addEventListener('click', openPiano));
+  let typed = '';
+  addEventListener('keydown', e => {
+    if (/INPUT|TEXTAREA/.test(document.activeElement?.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (!pianoBox.hidden && keyEls[k] && !e.repeat) { play(+keyEls[k].dataset.midi, keyEls[k]); return; }
+    if (k.length === 1) {
+      typed = (typed + k).slice(-5);
+      if (typed === 'piano' && pianoBox.hidden) openPiano();
+    }
+    if (e.key === 'Escape' && !pianoBox.hidden && !document.querySelector('dialog[open]')) closePiano();
+  });
+
+  /* ---------- Smart Ordering architecture ---------- */
+  const arch = document.querySelector('.arch');
+  const info = arch.querySelector('.arch-info');
+  const ARCH = {
+    chat: ['Customer chat', 'Customers order right inside their Telegram chat, with buttons, or by talking to an AI assistant that understands Iraqi Arabic.',
+           'محادثة الزبون', 'يطلب الزبون من داخل محادثة Telegram نفسها، بالأزرار أو بالحديث مع مساعد ذكي يفهم اللهجة العراقية.'],
+    miniapp: ['Mini App', 'A web app that opens inside Telegram. Every request carries Telegram’s signed initData, and the server verifies it, so nobody can pretend to be someone else.',
+              'التطبيق المصغّر', 'تطبيق ويب يفتح داخل Telegram. كل طلب يحمل بيانات initData الموقّعة من Telegram ويتحقق منها الخادم، فلا يمكن انتحال هوية أحد.'],
+    dash: ['Dashboard', 'React and TypeScript dashboard for owners and staff: menus, live orders over WebSockets, and analytics.',
+           'لوحة التحكم', 'لوحة بـ React و TypeScript للمالكين والموظفين: القوائم، والطلبات المباشرة عبر WebSockets، والتحليلات.'],
+    nginx: ['Nginx', 'The front door: TLS, request size limits and rate limiting. It serves the built apps and routes /api, /ws and /tg.',
+            'Nginx', 'البوابة الأمامية: التشفير TLS وحدود حجم الطلبات وتحديد المعدّل. يقدّم التطبيقات الجاهزة ويوجّه /api و /ws و /tg.'],
+    bot: ['Bot service', 'aiogram 3 service that runs many businesses’ bots through webhooks. It never touches the database; it only calls the internal API.',
+          'خدمة البوت', 'خدمة aiogram 3 تشغّل بوتات عدة أنشطة تجارية عبر webhooks. لا تلمس قاعدة البيانات أبداً، وتتعامل فقط مع الـ API الداخلي.'],
+    api: ['Django API: the single source of truth', 'Every business rule lives here once: prices, order states, permissions. Each query is scoped to one business, so tenants can never see each other’s data.',
+          'Django API: المصدر الوحيد للحقيقة', 'كل قواعد العمل موجودة هنا مرة واحدة: الأسعار وحالات الطلب والصلاحيات. كل استعلام محصور بنشاط تجاري واحد، فلا يرى أي مستأجر بيانات غيره.'],
+    workers: ['Celery workers and Beat', 'Outgoing Telegram messages, AI calls, image processing, reports and timers. Side effects run only after the database commit succeeds.',
+              'عمّال Celery و Beat', 'إرسال رسائل Telegram، واستدعاءات الذكاء الاصطناعي، ومعالجة الصور، والتقارير والمؤقّتات. الآثار الجانبية لا تُنفَّذ إلا بعد نجاح الحفظ في قاعدة البيانات.'],
+    pg: ['PostgreSQL', 'Every tenant row carries a business_id. Tests run on PostgreSQL, never SQLite, so they match production.',
+         'PostgreSQL', 'كل صف يحمل business_id. الاختبارات تعمل على PostgreSQL وليس SQLite، لتطابق بيئة الإنتاج.'],
+    redis: ['Redis', 'Task broker, cache, bot conversation state, WebSocket channel layer and rate-limit counters.',
+            'Redis', 'وسيط المهام، والتخزين المؤقت، وحالة محادثات البوت، وقناة WebSocket، وعدّادات تحديد المعدّل.'],
+    s3: ['S3 / MinIO', 'Storage for menu images and other media.', 'S3 / MinIO', 'تخزين صور القوائم والوسائط الأخرى.'],
+    tg: ['Telegram Bot API', 'Messages sent and edited on behalf of each business’s own bot.', 'Telegram Bot API', 'رسائل تُرسل وتُعدَّل باسم بوت كل نشاط تجاري.'],
+    ai: ['AI provider', 'Claude takes orders in Iraqi Arabic. The AI never sets prices: the server recalculates every order.',
+         'مزوّد الذكاء الاصطناعي', 'يستلم Claude الطلبات باللهجة العراقية. الذكاء الاصطناعي لا يحدد الأسعار أبداً، فالخادم يعيد حساب كل طلب.']
+  };
+  const showNode = id => {
+    arch.querySelectorAll('.node').forEach(n => n.classList.toggle('on', n.dataset.node === id));
+    arch.querySelectorAll('.edge').forEach(e => e.classList.toggle('on', !!id && (e.dataset.from === id || e.dataset.to === id)));
+    if (!id) {
+      info.innerHTML = `<b>${t('One backend, many clients', 'خادم واحد وعملاء كثيرون')}</b><span>${t('The bot, the Mini App, the dashboard, the AI and the workers all go through the same Django service layer, so no business rule is ever written twice.', 'البوت والتطبيق المصغّر ولوحة التحكم والذكاء الاصطناعي والعمّال، كلّها تمرّ عبر طبقة خدمات Django نفسها، فلا تُكتب أي قاعدة عمل مرتين.')}</span>`;
+      return;
+    }
+    const d = ARCH[id];
+    info.innerHTML = `<b>${t(d[0], d[2])}</b><span>${t(d[1], d[3])}</span>`;
+  };
+  arch.querySelectorAll('.node').forEach(n => {
+    const id = n.dataset.node;
+    n.addEventListener('pointerenter', () => showNode(id));
+    n.addEventListener('focus', () => showNode(id));
+    n.addEventListener('click', () => showNode(id));
+    n.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showNode(id); } });
+  });
+  arch.querySelector('.diagram').addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') showNode(null); });
+  const openArch = () => { showNode(null); arch.showModal(); };
+  arch.querySelector('.arch-close').addEventListener('click', () => arch.close());
+  arch.addEventListener('click', e => { if (e.target === arch) arch.close(); });
+  document.querySelectorAll('[data-arch]').forEach(b => b.addEventListener('click', openArch));
+
   // Apply the saved language before the effects script splits headings
   let saved = null;
   try { saved = localStorage.getItem('lang'); } catch (e) {}
@@ -1222,6 +1493,7 @@
     if (step) el.style.setProperty('--d', (i * step) + 'ms');
   });
   mark('main h2', 'none'); mark('main .lede');
+  mark('.ishtar', 'none');
   mark('.case', 'up', 0);
   mark('.layer', 'left', 70);
   mark('.rail', 'down');
