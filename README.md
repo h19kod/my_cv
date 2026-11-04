@@ -2,7 +2,7 @@
 
 Personal CV site of **Haider Ghanem (حيدر غانم)**, full-stack engineer in Baghdad, Iraq.
 
-**Live:** https://h19kod.github.io/my_cv/ · **Arabic:** https://h19kod.github.io/my_cv/?lang=ar
+**Live:** https://h19kod.github.io/Haider-Ghanem/ · **Arabic:** https://h19kod.github.io/Haider-Ghanem/?lang=ar
 
 ## What's inside
 
