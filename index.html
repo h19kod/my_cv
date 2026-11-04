@@ -351,7 +351,7 @@
   .stack {
     display: grid;
     grid-template-columns: 1fr 64px;
-    grid-template-rows: repeat(5, auto);
+    grid-template-rows: repeat(7, auto);
     gap: 6px;
   }
   .layer {
@@ -367,8 +367,10 @@
   .layer:nth-child(1) { border-inline-start-color: #5B7FC0; }
   .layer:nth-child(2) { border-inline-start-color: var(--lapis-soft); }
   .layer:nth-child(3) { border-inline-start-color: var(--lapis); }
-  .layer:nth-child(4) { border-inline-start-color: #173468; }
-  .layer:nth-child(5) { border-inline-start-color: var(--night); }
+  .layer:nth-child(4) { border-inline-start-color: #1F3D74; }
+  .layer:nth-child(5) { border-inline-start-color: #173468; }
+  .layer:nth-child(6) { border-inline-start-color: var(--night); }
+  .layer:nth-child(7) { border-inline-start-color: var(--gold); }
   .layer h3 {
     margin: 0;
     font-size: var(--s0);
@@ -395,8 +397,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.9rem;
     padding: 1.25rem 0;
+    contain: size; /* the layers set the height; the rail fills it */
   }
   .rail h3, .rail li {
     writing-mode: vertical-rl;
@@ -405,8 +408,8 @@
     white-space: nowrap;
   }
   .rail h3 { font-size: var(--s0); font-weight: 600; color: #fff; }
-  .rail ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
-  .rail li { font-size: 0.95rem; opacity: 0.9; }
+  .rail ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; align-items: center; }
+  .rail li { font-size: 0.88rem; opacity: 0.9; }
   .flow-note {
     margin: 1rem 0 0;
     font-size: var(--s-1);
@@ -757,6 +760,7 @@
       justify-content: flex-start;
       padding: 1rem 1.25rem;
     }
+    .rail { contain: none; }
     .rail ul { flex-direction: row; flex-wrap: wrap; gap: 0.3rem 1rem; }
     .rail h3, .rail li { writing-mode: horizontal-tb; transform: none; white-space: normal; }
     .layer { grid-template-columns: 1fr; gap: 0.35rem; padding: 1rem 1.15rem; }
@@ -810,7 +814,10 @@
     .layer h3 { font-size: 9.5pt; }
     .layer ul { font-size: 9.5pt; gap: 0.2rem 1rem; }
     .stack { gap: 1mm; }
-    .rail h3, .rail li { font-size: 8.5pt; }
+    .stack { grid-template-columns: 1fr; }
+    .rail { grid-column: 1; grid-row: auto; contain: none; flex-direction: row; justify-content: flex-start; padding: 1.4mm 4mm; gap: 4mm; }
+    .rail ul { flex-direction: row; gap: 4mm; }
+    .rail h3, .rail li { writing-mode: horizontal-tb; transform: none; font-size: 9pt; }
     .case { grid-template-columns: 22mm minmax(0, 1fr) 52mm; gap: 1mm 5mm; padding: 2.5mm 0; break-inside: avoid; }
     .case .num { font-size: 14pt; }
     .case h3 { font-size: 12pt; }
@@ -965,27 +972,35 @@
     <div class="stack">
       <div class="layer">
         <h3 data-i18n="l1">Frontend and mobile</h3>
-        <ul><li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>Next.js</li><li>Flutter</li></ul>
+        <ul><li>React</li><li>TypeScript</li><li>Next.js</li><li>Tailwind CSS</li><li>Three.js</li><li>Flutter</li><li>Dart</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l2">Backend</h3>
-        <ul><li>FastAPI</li><li>Django</li><li>Flask</li><li>Node.js</li><li>Express</li><li>WebSockets</li><li>Celery</li></ul>
+        <ul><li>FastAPI</li><li>Django</li><li>DRF</li><li>Flask</li><li>Node.js</li><li>Express</li><li>WebSockets</li><li>Celery</li></ul>
+      </div>
+      <div class="layer">
+        <h3 data-i18n="l5">AI and LLMs</h3>
+        <ul><li>OpenAI API</li><li>Claude API</li><li>Gemini</li><li>Whisper</li><li>TensorFlow Lite</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l3">Data and ML</h3>
-        <ul><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>XGBoost</li><li>Jupyter</li><li>Streamlit</li></ul>
+        <ul><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>XGBoost</li><li>Matplotlib</li><li>Seaborn</li><li>Jupyter</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l4">Databases</h3>
-        <ul><li>PostgreSQL</li><li>SQLite</li><li>SQLAlchemy</li><li>Redis</li><li>Firebase</li><li>Supabase</li></ul>
+        <ul><li>PostgreSQL</li><li>SQLite</li><li>SQLAlchemy</li><li>Alembic</li><li>Redis</li><li>Firebase</li><li>Supabase</li></ul>
       </div>
       <div class="layer">
         <h3>DevOps</h3>
-        <ul><li>Linux</li><li>Docker</li><li>GitHub Actions</li><li>Nginx</li><li>AWS S3</li></ul>
+        <ul><li>Linux</li><li>Git</li><li>Docker Compose</li><li>GitHub Actions</li><li>Nginx</li><li>AWS S3</li><li>Prometheus</li><li data-i18n="cisco">Cisco networking</li></ul>
+      </div>
+      <div class="layer">
+        <h3 data-i18n="l6">Testing and CI</h3>
+        <ul><li>pytest</li><li>Vitest</li><li>Playwright</li><li>Flutter test</li><li data-i18n="ci">CI on every push</li></ul>
       </div>
       <div class="rail">
         <h3 data-i18n="sec">Security</h3>
-        <ul><li>RBAC</li><li>JWT auth</li><li data-i18n="iso">Container isolation</li></ul>
+        <ul><li>RBAC</li><li>2FA</li><li data-i18n="rate">Rate limiting</li><li data-i18n="audit">Audit logs</li><li data-i18n="tenant">Tenant isolation</li></ul>
       </div>
     </div>
     <p class="flow-note" data-i18n="flow">Read top to bottom: what the user sees, down to where it runs.</p>
@@ -1050,7 +1065,8 @@
     'stack-h': 'المهارات، طبقةً طبقة',
     'stack-lede': 'كيف يمرّ الطلب عبر الأنظمة التي أبنيها، من الشاشة وصولاً إلى البنية التحتية. الأمان ليس طبقة واحدة، بل يمرّ عبرها جميعاً.',
     l1: 'الواجهات والموبايل', l2: 'الأنظمة الخلفية', l3: 'البيانات وتعلّم الآلة', l4: 'قواعد البيانات',
-    sec: 'الأمان', iso: 'عزل الحاويات',
+    sec: 'الأمان', iso: 'عزل الحاويات', rate: 'تحديد المعدّل', audit: 'سجلات التدقيق', tenant: 'عزل المستأجرين',
+    l5: 'الذكاء الاصطناعي والنماذج اللغوية', l6: 'الاختبارات و CI', ci: 'CI مع كل تحديث', cisco: 'شبكات Cisco',
     flow: 'اقرأ من الأعلى إلى الأسفل: ممّا يراه المستخدم إلى المكان الذي يعمل فيه النظام.',
     'lang-h': 'اللغات', ar: 'العربية', native: 'اللغة الأم', en: 'الإنجليزية', pro: 'إتقان مهني للعمل',
     cta: 'عندك نظام تريد بناءه؟ <a href="mailto:ha26at@gmail.com">راسلني</a>.',
