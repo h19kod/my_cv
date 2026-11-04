@@ -351,7 +351,7 @@
   .stack {
     display: grid;
     grid-template-columns: 1fr 64px;
-    grid-template-rows: repeat(7, auto);
+    grid-template-rows: repeat(6, auto);
     gap: 6px;
   }
   .layer {
@@ -370,7 +370,6 @@
   .layer:nth-child(4) { border-inline-start-color: #1F3D74; }
   .layer:nth-child(5) { border-inline-start-color: #173468; }
   .layer:nth-child(6) { border-inline-start-color: var(--night); }
-  .layer:nth-child(7) { border-inline-start-color: var(--gold); }
   .layer h3 {
     margin: 0;
     font-size: var(--s0);
@@ -972,31 +971,27 @@
     <div class="stack">
       <div class="layer">
         <h3 data-i18n="l1">Frontend and mobile</h3>
-        <ul><li>React</li><li>TypeScript</li><li>Next.js</li><li>Tailwind CSS</li><li>Three.js</li><li>Flutter</li><li>Dart</li></ul>
+        <ul><li>React</li><li>TypeScript</li><li>Next.js</li><li>Tailwind CSS</li><li>Flutter</li><li>Dart</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l2">Backend</h3>
-        <ul><li>FastAPI</li><li>Django</li><li>DRF</li><li>Flask</li><li>Node.js</li><li>Express</li><li>WebSockets</li><li>Celery</li></ul>
+        <ul><li>FastAPI</li><li>Django</li><li>Flask</li><li>Node.js</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l5">AI and LLMs</h3>
-        <ul><li>OpenAI API</li><li>Claude API</li><li>Gemini</li><li>Whisper</li><li>TensorFlow Lite</li></ul>
+        <ul><li>OpenAI API</li><li>Claude API</li><li>Gemini</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l3">Data and ML</h3>
-        <ul><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>XGBoost</li><li>Matplotlib</li><li>Seaborn</li><li>Jupyter</li></ul>
+        <ul><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>Jupyter</li></ul>
       </div>
       <div class="layer">
         <h3 data-i18n="l4">Databases</h3>
-        <ul><li>PostgreSQL</li><li>SQLite</li><li>SQLAlchemy</li><li>Alembic</li><li>Redis</li><li>Firebase</li><li>Supabase</li></ul>
+        <ul><li>PostgreSQL</li><li>SQLite</li><li>SQLAlchemy</li></ul>
       </div>
       <div class="layer">
         <h3>DevOps</h3>
-        <ul><li>Linux</li><li>Git</li><li>Docker Compose</li><li>GitHub Actions</li><li>Nginx</li><li>AWS S3</li><li>Prometheus</li><li data-i18n="cisco">Cisco networking</li></ul>
-      </div>
-      <div class="layer">
-        <h3 data-i18n="l6">Testing and CI</h3>
-        <ul><li>pytest</li><li>Vitest</li><li>Playwright</li><li>Flutter test</li><li data-i18n="ci">CI on every push</li></ul>
+        <ul><li>Linux</li><li>Git</li><li>Docker Compose</li><li>GitHub Actions</li></ul>
       </div>
       <div class="rail">
         <h3 data-i18n="sec">Security</h3>
@@ -1066,7 +1061,7 @@
     'stack-lede': 'كيف يمرّ الطلب عبر الأنظمة التي أبنيها، من الشاشة وصولاً إلى البنية التحتية. الأمان ليس طبقة واحدة، بل يمرّ عبرها جميعاً.',
     l1: 'الواجهات والموبايل', l2: 'الأنظمة الخلفية', l3: 'البيانات وتعلّم الآلة', l4: 'قواعد البيانات',
     sec: 'الأمان', iso: 'عزل الحاويات', rate: 'تحديد المعدّل', audit: 'سجلات التدقيق', tenant: 'عزل المستأجرين',
-    l5: 'الذكاء الاصطناعي والنماذج اللغوية', l6: 'الاختبارات و CI', ci: 'CI مع كل تحديث', cisco: 'شبكات Cisco',
+    l5: 'الذكاء الاصطناعي والنماذج اللغوية',
     flow: 'اقرأ من الأعلى إلى الأسفل: ممّا يراه المستخدم إلى المكان الذي يعمل فيه النظام.',
     'lang-h': 'اللغات', ar: 'العربية', native: 'اللغة الأم', en: 'الإنجليزية', pro: 'إتقان مهني للعمل',
     cta: 'عندك نظام تريد بناءه؟ <a href="mailto:ha26at@gmail.com">راسلني</a>.',
